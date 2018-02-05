@@ -1,3 +1,5 @@
 /Blitz/bin
 /Blitz/obj
 /Blitz/*.nupkg
+/bin
+/obj

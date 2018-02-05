@@ -1,0 +1,18 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AmBlitz</id>
+    <version>1.0.0.1</version>
+    <title>AmBlitz</title>
+    <authors>anmeng.wei</authors>
+    <owners>anmeng.wei</owners>
+    <licenseUrl>https://github.com/weianmeng/AmBlitz/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/weianmeng/AmBlitz</projectUrl>
+    <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/blitz.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>.net Mongodb开发手脚架</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2018 by 魏安蒙</copyright>
+    <tags>Blitz 开发手脚架</tags>
+  </metadata>
+</package>
