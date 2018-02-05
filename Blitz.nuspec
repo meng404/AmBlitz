@@ -11,7 +11,7 @@
     <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/blitz.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.net Mongodb开发手脚架</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <releaseNotes>nuget pack AmBlitz.csproj -properties Configuration=Release -symbols</releaseNotes>
     <copyright>Copyright 2018 by 魏安蒙</copyright>
     <tags>Blitz 开发手脚架</tags>
   </metadata>
