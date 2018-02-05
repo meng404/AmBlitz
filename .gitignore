@@ -3,3 +3,5 @@
 /Blitz/*.nupkg
 /bin
 /obj
+/packages
+/.vs
