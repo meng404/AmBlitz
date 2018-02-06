@@ -1,0 +1,5 @@
+/packages
+/.vs
+/src/AmBlitz/bin
+/src/AmBlitz/obj
+/src/AmBlitz/*.nupkg
