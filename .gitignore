@@ -3,3 +3,6 @@
 /src/AmBlitz/bin
 /src/AmBlitz/obj
 /src/AmBlitz/*.nupkg
+/AmBlitz/obj
+/AmBlitz/bin
+/AmBlitz/*.nupkg
