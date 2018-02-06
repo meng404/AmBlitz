@@ -62,6 +62,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
@@ -82,6 +83,8 @@
     <Compile Include="AutoMapping\AutoMapToAttribute.cs" />
     <Compile Include="AutoMapping\MapperManager.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Cache\ICache.cs" />
+    <Compile Include="Cache\MemoryCache.cs" />
     <Compile Include="Configuration\DataBaseConfiguration.cs" />
     <Compile Include="Configuration\BlitzConfiguration.cs" />
     <Compile Include="Configuration\BlitzConfigurationBulider.cs" />
