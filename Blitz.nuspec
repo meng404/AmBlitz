@@ -2,13 +2,13 @@
 <package >
   <metadata>
     <id>AmBlitz</id>
-    <version>1.0.0.1</version>
+    <version>1.0.0.2</version>
     <title>AmBlitz</title>
     <authors>anmeng.wei</authors>
     <owners>anmeng.wei</owners>
     <licenseUrl>https://github.com/weianmeng/AmBlitz/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/weianmeng/AmBlitz</projectUrl>
-    <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/blitz.ico</iconUrl>
+    <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/blitz.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.net Mongodb开发手脚架</description>
     <releaseNotes>nuget pack AmBlitz.csproj -properties Configuration=Release -symbols</releaseNotes>
