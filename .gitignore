@@ -1,2 +1,4 @@
 /.vs
 /packages
+/src/AmBlitz.UnitTest/bin
+/src/AmBlitz.UnitTest/obj
