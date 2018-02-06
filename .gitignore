@@ -6,3 +6,5 @@
 /packages
 /.vs
 /*.nupkg
+/AmBlitz.UnitTest/bin
+/AmBlitz.UnitTest/obj
