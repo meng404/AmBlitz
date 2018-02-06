@@ -50,7 +50,7 @@ namespace AmBlitz.Cache
 
         public bool Set<T>(string key, T data, int cacheTime)
         {
-            return Cache.Add(key, data, DateTimeOffset.Now.AddSeconds(cacheTime));
+            return Cache.Add(key, data, DateTimeOffset.Now.AddMinutes(cacheTime));
         }
     }
 }
