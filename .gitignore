@@ -1,10 +1,2 @@
-/Blitz/bin
-/Blitz/obj
-/Blitz/*.nupkg
-/bin
-/obj
-/packages
 /.vs
-/*.nupkg
-/AmBlitz.UnitTest/bin
-/AmBlitz.UnitTest/obj
+/packages
