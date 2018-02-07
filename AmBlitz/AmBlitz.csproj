@@ -90,6 +90,7 @@
     <Compile Include="Domain\PropertyDescriptor.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\PropertyInfoExtensions.cs" />
+    <Compile Include="Extensions\QueryableExtensions.cs" />
     <Compile Include="Extensions\ReflectionExtension.cs" />
     <Compile Include="Logging\Log4netModule.cs" />
     <Compile Include="Module\AmBlitzModule.cs" />

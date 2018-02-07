@@ -10,22 +10,28 @@ namespace AmBlitz.Mongo
 {
     public class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : class, IEntity<TPrimaryKey>
     {
-        private readonly IMongoDbProvider _dbProvider;
+        private readonly IMongoDbProvider _mongoDbProvider;
 
+        private readonly IBusinessPrimaryKeyGen _businessPrimaryKeyGen;
         //初始化
-        public RepositoryBase(IMongoDbProvider dbProvider)
+        public RepositoryBase(IMongoDbProvider dbProvider, IBusinessPrimaryKeyGen businessPrimaryKeyGen)
         {
-            _dbProvider = dbProvider;
+            _mongoDbProvider = dbProvider;
+            _businessPrimaryKeyGen = businessPrimaryKeyGen;
         }
 
         //主库
-        private IMongoCollection<TEntity> PrimaryMongoCollection => _dbProvider.MasterMongoCollection<TEntity>();
+        private IMongoCollection<TEntity> PrimaryMongoCollection => _mongoDbProvider.MasterMongoCollection<TEntity>();
 
         //从库
-        private IMongoCollection<TEntity> SlaveMongoCollection => _dbProvider.SlaveMongoCollection<TEntity>();
+        private IMongoCollection<TEntity> SlaveMongoCollection => _mongoDbProvider.SlaveMongoCollection<TEntity>();
+        /// <summary>
+        /// 实体描述信息
+        /// </summary>
+        private EntityDescribe _entityDescribe => _mongoDbProvider.EntityDescribe<TEntity>();
 
         //是否软删除
-        private bool SoftDelete => _dbProvider.EnableSoftDelete<TEntity>();
+        private bool SoftDelete => _mongoDbProvider.EnableSoftDelete<TEntity>();
 
         public virtual IQueryable<TEntity> Table
         {
@@ -198,21 +204,47 @@ namespace AmBlitz.Mongo
 
         public virtual void Insert(IEnumerable<TEntity> entities)
         {
+            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
+            {
+                foreach (var entity in entities)
+                {
+                    var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
+                    _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
+                }
+            }
             PrimaryMongoCollection.InsertMany(entities);
         }
 
         public virtual void Insert(TEntity entity)
         {
+            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
+            {
+                var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
+                _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
+            }
             PrimaryMongoCollection.InsertOne(entity);
         }
 
         public virtual Task InsertAsync(IEnumerable<TEntity> entities)
         {
+            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
+            {
+                foreach (var entity in entities)
+                {
+                    var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
+                    _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
+                }
+            }
             return PrimaryMongoCollection.InsertManyAsync(entities);
         }
 
         public virtual Task InsertAsync(TEntity entity)
         {
+            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
+            {
+                var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
+                _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
+            }
             return PrimaryMongoCollection.InsertOneAsync(entity);
         }
 
@@ -279,55 +311,8 @@ namespace AmBlitz.Mongo
     /// <typeparam name="TEntity"></typeparam>
     public class RepositoryBase<TEntity> : RepositoryBase<TEntity, string>, IRepository<TEntity> where TEntity : class, IEntity<string>
     {
-        private readonly IMongoDbProvider _mongoDbProvider;
-        private readonly IBusinessPrimaryKeyGen _businessPrimaryKeyGen;
-        public RepositoryBase(IMongoDbProvider dbProvider, IBusinessPrimaryKeyGen businessPrimaryKeyGen) : base(dbProvider)
+        public RepositoryBase(IMongoDbProvider dbProvider, IBusinessPrimaryKeyGen businessPrimaryKeyGen) : base(dbProvider, businessPrimaryKeyGen)
         {
-            _mongoDbProvider = dbProvider;
-            _businessPrimaryKeyGen = businessPrimaryKeyGen;
-        }
-        private EntityDescribe _entityDescribe => _mongoDbProvider.EntityDescribe<TEntity>();
-        public override void Insert(IEnumerable<TEntity> entities)
-        {
-            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
-            {
-                foreach (var entity in entities)
-                {
-                    var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
-                    _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
-                }
-            }
-            base.Insert(entities);
-        }
-        public override void Insert(TEntity entity)
-        {
-            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
-            {
-                var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
-                _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
-            }
-            base.Insert(entity);
-        }
-        public override Task InsertAsync(IEnumerable<TEntity> entities)
-        {
-            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
-            {
-                foreach (var entity in entities)
-                {
-                    var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
-                    _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
-                }
-            }
-            return base.InsertAsync(entities);
-        }
-        public override Task InsertAsync(TEntity entity)
-        {
-            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
-            {
-                var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
-                _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
-            };
-            return base.InsertAsync(entity);
         }
     }
 }
