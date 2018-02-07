@@ -1,52 +1,29 @@
 ﻿using AmBlitz.Cache;
 using AmBlitz.Configuration;
 using AmBlitz.Dependency;
-using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AmBlitz.RedisCache
 {
     public class RedisClient:ICache, ISingletonDependency
     {
-        private ConnectionMultiplexer _conn;
-        private int DbNum { get; }
 
+        private ConnectionMultiplexer _conn;
+        private readonly string connect;
         public RedisClient(AmBlitzConfiguration blitzConfiguration)
         {
-            var connstr = "";
-            foreach (var conn in blitzConfiguration.GetRedisConfigurations())
-            {
-                connstr = connstr + conn + ",";
-            }
-            connstr = connstr.TrimEnd(',');
-            _conn = ConnectionMultiplexer.Connect(connstr);
+            connect = blitzConfiguration.RedisConnectionString();
         }
 
         private IDatabase GetDatabase()
         {
             if (_conn == null)
             {
-                var connstr = "";
-                _conn = ConnectionMultiplexer.Connect(connstr);
+                _conn = ConnectionMultiplexer.Connect(connect);
             }
             return _conn.GetDatabase();
         }
-
-        private  string ConvertJson<T>(T value)
-        {
-            if (value == null)
-            {
-                return null;
-            }
-            string result = value is string ? value.ToString() : JsonConvert.SerializeObject(value);
-            return result;
-        }
-
 
         public long Decrement(string key, long value)
         {
@@ -57,25 +34,25 @@ namespace AmBlitz.RedisCache
         public T Get<T>(string key)
         {
             var db = GetDatabase();
-            var value = db.StringGet(key);
-            if (value == RedisValue.Null)
+            var redisValue = db.StringGet(key);
+            if (!redisValue.HasValue)
             {
                 return default(T);
             }
-            return JsonConvert.DeserializeObject<T>(value);
+            return (T)JsonSerializationHelper.DeserializeWithType(redisValue);
         }
 
         public T Get<T>(string key, Func<T> func, int cacheTime = 30)
         {
             var db = GetDatabase();
-            var value = db.StringGet(key);
-            if (value == RedisValue.Null)
+            var redisValue = db.StringGet(key);
+            if (!redisValue.HasValue)
             {
-                var objValue = func();
-                Set(key, objValue, cacheTime);
-                return objValue;
+                var res = func();
+                Set(key, res, cacheTime);
+                return res;
             }
-            return JsonConvert.DeserializeObject<T>(value);
+            return (T)JsonSerializationHelper.DeserializeWithType(redisValue);
         }
 
         public long Increment(string key, long value)
@@ -92,11 +69,8 @@ namespace AmBlitz.RedisCache
 
         public bool Set<T>(string key, T data, int cacheTime = 30)
         {
-
-           
             var db = GetDatabase();
-            var json = ConvertJson(data);
-            return db.StringSet(key, json, TimeSpan.FromMinutes(cacheTime));
+            return db.StringSet(key, JsonSerializationHelper.SerializeWithType(data,typeof(T)), TimeSpan.FromMinutes(cacheTime));
         }
     }
 }

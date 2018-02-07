@@ -132,20 +132,11 @@ namespace AmBlitz.Configuration
         /// <summary>
         /// 配置redis信息
         /// </summary>
-        /// <param name="host">host</param>
-        /// <param name="port">port</param>
-        /// <param name="dataBaseIndex">dataBaseIndex</param>
-        /// <returns></returns>
-        public AmBlitzConfigurationPart RedisConfigurations(string host, int port, int dataBaseIndex=0)
+        /// <param name="connect">host</param>
+        public AmBlitzConfigurationPart UseRedisDataBase(string connect)
         {
             Configuration.EnableRedis = true;
-            var redisConfigurations = Configuration.RedisConfigurations.Find(m => m.Host == host);
-            if (redisConfigurations != null)
-            {
-                Configuration.RedisConfigurations.Remove(redisConfigurations);
-            }
-
-            Configuration.RedisConfigurations.Add(new RedisConfiguration { Host = host,  Port = port, DataBaseIndex = dataBaseIndex });
+            Configuration.RedisConnect = connect;
             return this;
         }
     }

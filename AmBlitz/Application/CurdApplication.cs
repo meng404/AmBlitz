@@ -19,9 +19,9 @@ namespace AmBlitz.Application
         {
             _repository.Insert(entity);
         }
-        public virtual Task InsertAsync(TEntity entity)
+        public virtual  Task InsertAsync(TEntity entity)
         {
-            return _repository.InsertAsync(entity);
+            return  _repository.InsertAsync(entity);
         }
 
         public virtual void Insert(IEnumerable<TEntity> entitys)

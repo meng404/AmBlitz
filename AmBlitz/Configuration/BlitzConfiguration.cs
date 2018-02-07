@@ -14,7 +14,7 @@ namespace AmBlitz.Configuration
         /// <summary>
         /// redids 配置信息
         /// </summary>
-        internal List<RedisConfiguration> RedisConfigurations { get; set; }
+        internal string RedisConnect { get; set; }
         /// <summary>
         /// 随机数获取
         /// </summary>
@@ -23,7 +23,6 @@ namespace AmBlitz.Configuration
         internal AmBlitzConfiguration()
         {
             DataBaseConfigurations = new List<DataBaseConfiguration>();
-            RedisConfigurations = new List<RedisConfiguration>();
             DomainAssembly = new List<Assembly>();
         }
         /// <summary>
@@ -99,9 +98,9 @@ namespace AmBlitz.Configuration
         /// redis 配置信息
         /// </summary>
         /// <returns></returns>
-        public List<RedisConfiguration> GetRedisConfigurations()
+        public string RedisConnectionString()
         {
-            return RedisConfigurations;
+            return RedisConnect;
         }
     }
 }
