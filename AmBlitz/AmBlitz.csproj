@@ -69,7 +69,7 @@
     <Compile Include="Cache\MemoryCache.cs" />
     <Compile Include="Configuration\DataBaseConfiguration.cs" />
     <Compile Include="Configuration\BlitzConfiguration.cs" />
-    <Compile Include="Configuration\BlitzConfigurationBulider.cs" />
+    <Compile Include="Configuration\AmBlitzGlobalConfiguration.cs" />
     <Compile Include="Configuration\BlitzConfigurationPart.cs" />
     <Compile Include="Dependency\DependencyLifeStyle.cs" />
     <Compile Include="Dependency\IocManager.cs" />

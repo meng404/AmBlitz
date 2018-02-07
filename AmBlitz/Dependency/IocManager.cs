@@ -16,7 +16,7 @@ namespace AmBlitz.Dependency
         }
         public static IocManager Instance { get; } = new IocManager();
 
-        public void InitContainer()
+        internal void InitContainer()
         {
             Container = ContainerBuilder.Build();
         }

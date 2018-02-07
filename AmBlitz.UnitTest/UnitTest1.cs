@@ -1,7 +1,9 @@
 ﻿using AmBlitz.Cache;
+using AmBlitz.Configuration;
 using AmBlitz.Domain;
 using Autofac;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Configuration;
 
 namespace AmBlitz.UnitTest
 {
@@ -13,6 +15,14 @@ namespace AmBlitz.UnitTest
         [TestInitialize]
         public void Init()
         {
+            var masterDbcon = ConfigurationManager.AppSettings["MongodbHostPrimary"] ?? "";
+            //配置手脚架
+            AmBlitzGlobalConfiguration.Configuration(settings =>
+            {
+                settings
+                .MasterDataBases("EventBigData", masterDbcon)
+                .UseRedisDataBase("ebd.redis.31huiyi.com:6379");
+            });
             Bootstrapper.Initialize();
         }
 
