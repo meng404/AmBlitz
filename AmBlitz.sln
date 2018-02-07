@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmBlitz.RedisCache", "AmBli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmBlitz.UnitTest", "AmBlitz.UnitTest\AmBlitz.UnitTest.csproj", "{A606A251-F1C8-4E90-854A-824336B8E015}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmBlitz.Mongo", "AmBlitz.Mongo\AmBlitz.Mongo.csproj", "{DEBFC6FF-8D9A-4B09-9024-868BC415996C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A606A251-F1C8-4E90-854A-824336B8E015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A606A251-F1C8-4E90-854A-824336B8E015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A606A251-F1C8-4E90-854A-824336B8E015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEBFC6FF-8D9A-4B09-9024-868BC415996C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBFC6FF-8D9A-4B09-9024-868BC415996C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBFC6FF-8D9A-4B09-9024-868BC415996C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBFC6FF-8D9A-4B09-9024-868BC415996C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

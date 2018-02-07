@@ -1,5 +1,4 @@
-﻿using MongoDB.Driver;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -13,12 +12,10 @@ namespace AmBlitz.Domain
         bool Any(Expression<Func<TEntity, bool>> filter);
         bool IsUnique(TPrimaryKey id, string filedName, object value);
         long Count(Expression<Func<TEntity, bool>> filter);
-        long Count(FilterDefinition<TEntity> filter);
         bool Remove(Expression<Func<TEntity, bool>> filter);
         bool Delete(Expression<Func<TEntity, bool>> filter);
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> filter);
         IEnumerable<TEntity> FindAll(Expression<Func<TEntity, bool>> filter);
-        IEnumerable<TEntity> Find(FilterDefinition<TEntity> filter, Expression<Func<TEntity, object>> orderBy, int pageIndex, int pageSize, bool sortAsc = true);
         void Insert(IEnumerable<TEntity> entities);
         void Insert(TEntity entity);
         bool Replace(TEntity entity);

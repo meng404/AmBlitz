@@ -47,7 +47,8 @@ namespace AmBlitz.Domain
                     {
                         DbName = entityAttribute.DbName,
                         TableName = entityAttribute.TableName,
-                        ReadSecondary = entityAttribute.ReadSecondary
+                        ReadSecondary = entityAttribute.ReadSecondary,
+                        SoftDeleteEntity = typeof(ISoftDelete).IsAssignableFrom(type)
                     };
 
 

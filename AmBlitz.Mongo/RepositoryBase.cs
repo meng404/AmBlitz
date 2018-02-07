@@ -1,11 +1,12 @@
-﻿using MongoDB.Driver;
+﻿using AmBlitz.Domain;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace AmBlitz.Domain
+namespace AmBlitz.Mongo
 {
     public class RepositoryBase<TEntity, TPrimaryKey> : IRepository<TEntity, TPrimaryKey> where TEntity : class, IEntity<TPrimaryKey>
     {
@@ -93,13 +94,6 @@ namespace AmBlitz.Domain
         {
             return await SlaveMongoCollection.Find(SoftFilter(filter)).CountAsync();
         }
-        public virtual long Count(FilterDefinition<TEntity> filter)
-        {
-            if (!SoftDelete) return SlaveMongoCollection.Find(filter).Count();
-
-            var soltFilter = Builders<TEntity>.Filter.And(filter, Builders<TEntity>.Filter.Eq(i => ((ISoftDelete)i).IsDeleted, false));
-            return SlaveMongoCollection.Find(soltFilter).Count();
-        }
         public virtual bool Remove(Expression<Func<TEntity, bool>> filter)
         {
             return PrimaryMongoCollection.DeleteMany(filter).IsAcknowledged;
@@ -135,23 +129,6 @@ namespace AmBlitz.Domain
         {
             var x = await SlaveMongoCollection.FindAsync(SoftFilter(filter));
             return x.ToList();
-        }
-
-        public virtual IEnumerable<TEntity> Find(FilterDefinition<TEntity> filter, Expression<Func<TEntity, object>> orderBy, int pageIndex, int pageSize, bool sortAsc = true)
-        {
-            if (!SoftDelete)
-            {
-                return sortAsc ?
-                    SlaveMongoCollection.Find(filter).SortBy(orderBy).Skip((pageIndex - 1) * pageSize).Limit(pageSize).ToList()
-                    : SlaveMongoCollection.Find(filter).SortByDescending(orderBy).Skip((pageIndex - 1) * pageSize).Limit(pageSize).ToList();
-            }
-
-            var solfilter = Builders<TEntity>.Filter.And(filter,
-                Builders<TEntity>.Filter.Eq(i => ((ISoftDelete)i).IsDeleted, false));
-
-            return sortAsc ?
-                SlaveMongoCollection.Find(solfilter).SortBy(orderBy).Skip((pageIndex - 1) * pageSize).Limit(pageSize).ToList()
-                : SlaveMongoCollection.Find(solfilter).SortByDescending(orderBy).Skip((pageIndex - 1) * pageSize).Limit(pageSize).ToList();
         }
 
         public virtual TEntity FindOneAndUpdate(Expression<Func<TEntity, bool>> filter, Dictionary<Expression<Func<TEntity, object>>, object> updates)

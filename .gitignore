@@ -11,3 +11,5 @@
 /TestResults
 /AmBlitz.UnitTest/bin
 /AmBlitz.UnitTest/obj
+/AmBlitz.Mongo/bin
+/AmBlitz.Mongo/obj

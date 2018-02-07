@@ -1,7 +1,8 @@
 ﻿using AmBlitz.Dependency;
+using AmBlitz.Domain;
 using MongoDB.Driver;
 
-namespace AmBlitz.Domain
+namespace AmBlitz.Mongo
 {
     public interface IMongoDbProvider: ISingletonDependency
     {

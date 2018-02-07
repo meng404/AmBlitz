@@ -16,6 +16,6 @@ namespace AmBlitz.Domain
         /// <summary>
         /// 业务主键属性访问
         /// </summary>
-        internal PropertyDescriptor KeyDescriptor { get; set; }
+        public PropertyDescriptor KeyDescriptor { get; set; }
     }
 }

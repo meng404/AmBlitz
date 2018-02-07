@@ -1,4 +1,5 @@
 ﻿using AmBlitz.Cache;
+using AmBlitz.Domain;
 using Autofac;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -32,7 +33,17 @@ namespace AmBlitz.UnitTest
             x = cache.Decrement("j", 1);
             Assert.AreEqual(x, 0);
 
+        }
 
+
+        [TestMethod]
+        public void TestMethod2()
+        {
+
+            var studentRepository = Bootstrapper.IocManager.Container.Resolve<IRepository<Student>>();
+            //studentRepository.Insert(new Student { Name = "小明" });
+            var student = studentRepository.FirstOrDefault(m => m.Name == "小明");
+            Assert.AreNotEqual(student, null);
         }
     }
 }

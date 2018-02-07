@@ -1,7 +1,8 @@
 ﻿using AmBlitz.Configuration;
+using AmBlitz.Domain;
 using MongoDB.Driver;
 using System.Collections.Concurrent;
-namespace AmBlitz.Domain
+namespace AmBlitz.Mongo
 {
     public class MongoDbProvider : IMongoDbProvider 
     {
@@ -95,8 +96,11 @@ namespace AmBlitz.Domain
         public bool EnableSoftDelete<TEntity>()
         {
             var entityDescribe = EntityDescribe<TEntity>();
-
-            return _easyDoConfiguration.EnableSoftDelete(entityDescribe.DbName);
+            if (!entityDescribe.SoftDeleteEntity)
+            {
+                return false;
+            }
+            return _easyDoConfiguration.EnableSoftDelete(entityDescribe.DbName) && entityDescribe.SoftDeleteEntity;
         }
 
         public EntityDescribe EntityDescribe<TEntity>()
