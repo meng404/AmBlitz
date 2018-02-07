@@ -6,7 +6,7 @@ namespace AmBlitz.Cache
     public class AmBlitzMemoryCache: ICache, ISingletonDependency
     {
         private static readonly MemoryCache Cache = MemoryCache.Default;
-        public long Decrement(string key, uint value)
+        public long Decrement(string key, long value)
         {
 
             throw new NotImplementedException();
@@ -36,7 +36,7 @@ namespace AmBlitz.Cache
             return (T)x;
         }
 
-        public long Increment(string key, uint value)
+        public long Increment(string key, long value)
         {
             throw new NotImplementedException();
         }

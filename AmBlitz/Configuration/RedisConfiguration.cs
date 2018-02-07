@@ -4,7 +4,7 @@
     /// <summary>
     /// redis配置信息
     /// </summary>
-    internal class RedisConfiguration
+    public class RedisConfiguration
     {
         public int Port { get; set; }
         public int DataBaseIndex { get; set; }

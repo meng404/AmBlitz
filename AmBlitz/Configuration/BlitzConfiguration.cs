@@ -99,13 +99,9 @@ namespace AmBlitz.Configuration
         /// redis 配置信息
         /// </summary>
         /// <returns></returns>
-        public string[] RedisConnectionStrings()
+        public List<RedisConfiguration> GetRedisConfigurations()
         {
-            if (!RedisConfigurations.Any())
-            {
-                throw new ArgumentException("至少需要配置一个Reids连接信息！");
-            }
-            return RedisConfigurations.Select(m => m.Host + ":" + m.Port).ToArray();
+            return RedisConfigurations;
         }
     }
 }

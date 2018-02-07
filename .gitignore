@@ -6,3 +6,5 @@
 /AmBlitz/obj
 /AmBlitz/bin
 /AmBlitz/*.nupkg
+/AmBlitz.RedisCache/bin
+/AmBlitz.RedisCache/obj
