@@ -8,16 +8,23 @@ namespace AmBlitz.Domain
         /// <summary>
         /// 数据库名称
         /// </summary>
-        public string DbName { get; set; }
+        internal string DbName { get; set; }
 
         /// <summary>
         /// 表名
         /// </summary>
-        public string TableName { get; set; }
+        internal string TableName { get; set; }
 
         /// <summary>
         /// 启用主从 并且属性值为true读从库
         /// </summary>
-        public bool ReadSecondary { get; set; }
+        internal bool ReadSecondary { get; set; }
+
+        public EntityAttribute(string dataBaseName,string tableName,bool readSecondary = true)
+        {
+            DbName = dataBaseName;
+            TableName = tableName;
+            ReadSecondary = readSecondary;
+        }
     }
 }

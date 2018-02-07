@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace AmBlitz.UnitTest
 {
-    [Entity(DbName = "EventBigData", TableName = "Student")]
+    [Entity("EventBigData", "Student")]
     public class Student : IEntity<string>
     {
         [BsonId]
