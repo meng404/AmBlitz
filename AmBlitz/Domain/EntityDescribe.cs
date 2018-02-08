@@ -18,6 +18,7 @@ namespace AmBlitz.Domain
         /// 启用主从 并且属性值为true读从库
         /// </summary>
         public bool ReadSecondary { get; set; }
+
         /// <summary>
         /// 是否支持软删除对象
         /// </summary>
