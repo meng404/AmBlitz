@@ -11,7 +11,7 @@
     <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/amblitz.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>AmBlitz.RedisCache</description>
-    <releaseNotes>nuget pack AmBlitz.RedisCache.csproj -properties Configuration=Release -symbols</releaseNotes>
+    <releaseNotes>nuget pack AmBlitz.RedisCache.csproj -properties Configuration=Debug -symbols</releaseNotes>
     <copyright>Copyright 2018 by 魏安蒙</copyright>
     <tags>AmBlitz.RedisCache</tags>
   </metadata>

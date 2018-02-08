@@ -8,10 +8,10 @@
     <owners>anmeng.wei</owners>
     <licenseUrl>https://github.com/weianmeng/AmBlitz/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/weianmeng/AmBlitz</projectUrl>
-    <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/blitz.png</iconUrl>
+    <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/amblitz.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>AmBlitz.Mongo</description>
-    <releaseNotes>nuget pack AmBlitz.Mongo.csproj -properties Configuration=Release -symbols</releaseNotes>
+    <releaseNotes>nuget pack AmBlitz.Mongo.csproj -properties Configuration=Debug -symbols</releaseNotes>
     <copyright>Copyright 2018 by 魏安蒙</copyright>
     <tags>AmBlitz.Mongo</tags>
   </metadata>
