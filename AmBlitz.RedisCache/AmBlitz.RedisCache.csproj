@@ -53,6 +53,7 @@
     <Compile Include="RedisClient.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AmBlitz.RedisCache.nuspec" />
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>

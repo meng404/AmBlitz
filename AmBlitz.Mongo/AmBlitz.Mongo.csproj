@@ -79,6 +79,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AmBlitz.Mongo.nuspec" />
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>

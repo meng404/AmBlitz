@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>AmBlitz</id>
-    <version>1.0.0.5</version>
+    <version>$version$</version>
     <title>AmBlitz</title>
     <authors>anmeng.wei</authors>
     <owners>anmeng.wei</owners>
@@ -15,4 +15,7 @@
     <copyright>Copyright 2018 by 魏安蒙</copyright>
     <tags>Blitz 开发手脚架</tags>
   </metadata>
+  <files>
+    <file src="bin\$configuration$\$id$.pdb" target="lib\net45\" />
+  </files>
 </package>

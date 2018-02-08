@@ -13,3 +13,4 @@
 /AmBlitz.UnitTest/obj
 /AmBlitz.Mongo/bin
 /AmBlitz.Mongo/obj
+/nupkg/*.nupkg
