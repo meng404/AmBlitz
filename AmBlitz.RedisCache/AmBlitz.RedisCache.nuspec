@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>AmBlitz</id>
+    <id>AmBlitz.RedisCache</id>
     <version>1.0.0.5</version>
-    <title>AmBlitz</title>
+    <title>AmBlitz.RedisCache</title>
     <authors>anmeng.wei</authors>
     <owners>anmeng.wei</owners>
     <licenseUrl>https://github.com/weianmeng/AmBlitz/blob/master/LICENSE.md</licenseUrl>
     <projectUrl>https://github.com/weianmeng/AmBlitz</projectUrl>
-    <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/blitz.png</iconUrl>
+    <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/amblitz.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>.net Mongodb开发手脚架</description>
-    <releaseNotes>nuget pack AmBlitz.csproj -properties Configuration=Release -symbols</releaseNotes>
+    <description>AmBlitz.RedisCache</description>
+    <releaseNotes>nuget pack AmBlitz.RedisCache.csproj -properties Configuration=Release -symbols</releaseNotes>
     <copyright>Copyright 2018 by 魏安蒙</copyright>
-    <tags>Blitz 开发手脚架</tags>
+    <tags>AmBlitz.RedisCache</tags>
   </metadata>
 </package>
