@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace AmBlitz.Toolkit
+namespace AmBlitz.ToolKit
 {
     public static class QueryableExtensions
     {

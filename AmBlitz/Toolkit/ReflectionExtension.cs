@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace AmBlitz.Toolkit
+namespace AmBlitz.ToolKit
 {
     public static class ReflectionExtension
     {

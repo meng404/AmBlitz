@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace AmBlitz.Toolkit
+namespace AmBlitz.ToolKit
 {
     internal static class TimeSpanParser
     {

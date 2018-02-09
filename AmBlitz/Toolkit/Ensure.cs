@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Threading;
 
-namespace AmBlitz.Toolkit
+namespace AmBlitz.ToolKit
 {
     [DebuggerStepThrough]
     public static class Ensure

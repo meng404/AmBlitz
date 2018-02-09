@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using AmBlitz.Toolkit;
+using AmBlitz.ToolKit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
