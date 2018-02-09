@@ -22,14 +22,5 @@ namespace AmBlitz.Application
         Task<bool> UpdateIncAsync(Expression<Func<TEntity, bool>> filter, Dictionary<Expression<Func<TEntity, object>>, object> updates);
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> filter);
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> filter);
-
-        /// <summary>
-        /// 获取所有符合条件的 (小心使用）
-        /// </summary>
-        /// <param name="filter"></param>
-        /// <returns>IEnumerable<TEntity/></returns>
-        IEnumerable<TEntity> FindAll(Expression<Func<TEntity, bool>> filter);
-
-        Task<IEnumerable<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> filter);
     }
 }

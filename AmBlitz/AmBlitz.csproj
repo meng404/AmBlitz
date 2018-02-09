@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\IApplication.cs" />
+    <Compile Include="Application\Pagination.cs" />
     <Compile Include="Application\ResponseMessage.cs" />
     <Compile Include="AutoMapping\AutoMapAttributeBase.cs" />
     <Compile Include="AutoMapping\AutoMapExtensions.cs" />

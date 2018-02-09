@@ -85,21 +85,6 @@ namespace AmBlitz.Application
         {
             return _repository.FirstOrDefaultAsync(filter);
         }
-        /// <inheritdoc />
-        /// <summary>
-        /// 获取所有符合条件的 (小心使用）
-        /// </summary>
-        /// <param name="filter"></param>
-        /// <returns>IEnumerable<TEntity /></returns>
-        public virtual IEnumerable<TEntity> FindAll(Expression<Func<TEntity, bool>> filter)
-        {
-            return _repository.FindAll(filter);
-        }
-
-        public virtual async Task<IEnumerable<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> filter)
-        {
-            return await _repository.FindAllAsync(filter);
-        }
 
     }
 }
