@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace AmBlitz.Extensions
+namespace AmBlitz.Toolkit
 {
     public static class EnumerableExtensions
     {

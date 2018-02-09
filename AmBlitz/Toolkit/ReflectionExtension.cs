@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace AmBlitz.Extensions
+namespace AmBlitz.Toolkit
 {
     public static class ReflectionExtension
     {

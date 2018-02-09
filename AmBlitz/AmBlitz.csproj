@@ -88,16 +88,18 @@
     <Compile Include="Domain\BusinessPrimaryKeyAttribute.cs" />
     <Compile Include="Domain\NullBusinessPrimaryKeyGen.cs" />
     <Compile Include="Domain\PropertyDescriptor.cs" />
-    <Compile Include="Extensions\EnumerableExtensions.cs" />
-    <Compile Include="Extensions\PropertyInfoExtensions.cs" />
-    <Compile Include="Extensions\QueryableExtensions.cs" />
-    <Compile Include="Extensions\ReflectionExtension.cs" />
+    <Compile Include="Toolkit\Ensure.cs" />
+    <Compile Include="Toolkit\EnumerableExtensions.cs" />
+    <Compile Include="Toolkit\PropertyInfoExtensions.cs" />
+    <Compile Include="Toolkit\QueryableExtensions.cs" />
+    <Compile Include="Toolkit\ReflectionExtension.cs" />
     <Compile Include="Logging\Log4netModule.cs" />
     <Compile Include="Module\AmBlitzModule.cs" />
     <Compile Include="Module\DependAttribute.cs" />
     <Compile Include="Module\ModuleManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="KernelModule.cs" />
+    <Compile Include="Toolkit\TimeSpanParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AmBlitz.nuspec" />
