@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>AmBlitz.RabbitMQ</id>
+    <version>$version$</version>
+    <title>AmBlitz.RabbitMQ</title>
+    <authors>anmeng.wei</authors>
+    <owners>anmeng.wei</owners>
+    <licenseUrl>https://github.com/weianmeng/AmBlitz/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/weianmeng/AmBlitz</projectUrl>
+    <iconUrl>https://github.com/weianmeng/AmBlitz/blob/master/amblitz.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>AmBlitz.RabbitMQ</description>
+    <releaseNotes>nuget pack AmBlitz.RabbitMQ.csproj -properties Configuration=Debug -symbols</releaseNotes>
+    <copyright>Copyright 2018 by 魏安蒙</copyright>
+    <tags>AmBlitz.RabbitMQ</tags>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\$id$.pdb" target="lib\net45\" />
+  </files>
+</package>
