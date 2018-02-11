@@ -14,3 +14,5 @@
 /AmBlitz.Mongo/bin
 /AmBlitz.Mongo/obj
 /nupkg/*.nupkg
+/AmBlitz.RabbitMQ/bin
+/AmBlitz.RabbitMQ/obj
