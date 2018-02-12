@@ -8,7 +8,6 @@ namespace AmBlitz.RedisCache
 {
     public class RedisClient:ICache, ISingletonDependency
     {
-
         private ConnectionMultiplexer _conn;
         private readonly string connect;
         public RedisClient(AmBlitzConfiguration blitzConfiguration)
@@ -35,24 +34,25 @@ namespace AmBlitz.RedisCache
         {
             var db = GetDatabase();
             var redisValue = db.StringGet(key);
-            if (!redisValue.HasValue)
+            if (redisValue.HasValue)
             {
-                return default(T);
+                return JsonSerializer.Deserialize<T>(redisValue);
             }
-            return (T)JsonSerializationHelper.DeserializeWithType(redisValue);
+            return default(T);
         }
 
         public T Get<T>(string key, Func<T> func, int cacheTime = 30)
         {
             var db = GetDatabase();
             var redisValue = db.StringGet(key);
-            if (!redisValue.HasValue)
+
+            if (redisValue.HasValue)
             {
-                var res = func();
-                Set(key, res, cacheTime);
-                return res;
+                return JsonSerializer.Deserialize<T>(redisValue);
             }
-            return (T)JsonSerializationHelper.DeserializeWithType(redisValue);
+            var res = func();
+            Set(key, res, cacheTime);
+            return res;
         }
 
         public long Increment(string key, long value)
@@ -70,7 +70,7 @@ namespace AmBlitz.RedisCache
         public bool Set<T>(string key, T data, int cacheTime = 30)
         {
             var db = GetDatabase();
-            return db.StringSet(key, JsonSerializationHelper.SerializeWithType(data,typeof(T)), TimeSpan.FromMinutes(cacheTime));
+            return db.StringSet(key, JsonSerializer.Serialize(data), TimeSpan.FromMinutes(cacheTime));
         }
     }
 }

@@ -42,7 +42,21 @@ namespace AmBlitz.UnitTest
             Assert.AreEqual(x, 1);
             x = cache.Decrement("j", 1);
             Assert.AreEqual(x, 0);
+            var data = new MyClass { MyProperty = 1, MyProperty1 = new MyClass1 { MyProperty = "xiaom" } };
+            cache.Set("666", data);
+            var getData = cache.Get<MyClass>("666");
+            Assert.AreEqual(getData.MyProperty1.MyProperty, "xiaom");
+        }
 
+        
+        public class MyClass
+        {
+            public int MyProperty { get; set; }
+            public MyClass1 MyProperty1 { get; set; }
+        }
+        public class MyClass1
+        {
+            public string MyProperty { get; set; }
         }
 
 
