@@ -9,24 +9,24 @@ namespace AmBlitz.Module
 {
     public class ModuleManager
     {
-        private readonly List<AmBlitzModule> _AmBlitzModules;
+        private readonly List<AmBlitzModule> _amBlitzModules;
 
         private readonly Type _startAmBlitzModuleType;
-        internal IocManager _iocManager { get; private set; }
+        internal IocManager IocManager { get; }
         public ModuleManager(Type startAmBlitzModuleType, IocManager iocManager)
         {
             _startAmBlitzModuleType = startAmBlitzModuleType;
-            _AmBlitzModules = new List<AmBlitzModule>();
-            _iocManager = iocManager;
+            _amBlitzModules = new List<AmBlitzModule>();
+            IocManager = iocManager;
         }
 
         public void BulidAmBlitzModules()
         {
             //查找程序依赖的模块
             BuildAmBlitzModules(_startAmBlitzModuleType);
-            var sortModules = _AmBlitzModules.OrderByDescending(m => m.Sort).ToList();
+            var sortModules = _amBlitzModules.OrderByDescending(m => m.Sort).ToList();
             //实体对象信息管理
-            EntityManager.Bulid(_iocManager.ContainerBuilder, sortModules.Select(m=>m.AmBlitzModuleAssembly).ToArray());
+            EntityManager.Bulid(IocManager.ContainerBuilder, sortModules.Select(m=>m.AmBlitzModuleAssembly).ToArray());
 
             //各个模块初始化
             sortModules.ForEach(m=>m.PreInit());
@@ -36,22 +36,22 @@ namespace AmBlitz.Module
             MapperManager.BulidMapper(sortModules.Select(x => x.AmBlitzModuleAssembly).ToList());
         }
 
-        private void BuildAmBlitzModules(Type AmBlitzModuleType,int sort=0)
+        private void BuildAmBlitzModules(Type amBlitzModuleType,int sort=0)
         {
            
-            if (!AmBlitzModule.IsAmBlitzModule(AmBlitzModuleType))
+            if (!AmBlitzModule.IsAmBlitzModule(amBlitzModuleType))
             {
-                throw new ArgumentException("This type is not an AmBlitz module: " + AmBlitzModuleType.AssemblyQualifiedName);
+                throw new ArgumentException("This type is not an AmBlitz module: " + amBlitzModuleType.AssemblyQualifiedName);
             }
-            var amBlitzModule = _AmBlitzModules.FirstOrDefault(m => m.AmBlitzModuleType == AmBlitzModuleType);
+            var amBlitzModule = _amBlitzModules.FirstOrDefault(m => m.AmBlitzModuleType == amBlitzModuleType);
             if (amBlitzModule == null)
             {
-                var module = (AmBlitzModule) Activator.CreateInstance(AmBlitzModuleType);
-                module.AmBlitzModuleType = AmBlitzModuleType;
-                module.AmBlitzModuleAssembly = AmBlitzModuleType.Assembly;
+                var module = (AmBlitzModule) Activator.CreateInstance(amBlitzModuleType);
+                module.AmBlitzModuleType = amBlitzModuleType;
+                module.AmBlitzModuleAssembly = amBlitzModuleType.Assembly;
                 module.Sort = sort;
-                module.ContainerBuilder = _iocManager.ContainerBuilder;
-                _AmBlitzModules.Add(module);
+                module.ContainerBuilder = IocManager.ContainerBuilder;
+                _amBlitzModules.Add(module);
             }
             else
             {
@@ -60,11 +60,11 @@ namespace AmBlitz.Module
                     amBlitzModule.Sort = sort;
                 }
             }
-            if (!AmBlitzModuleType.IsDefined(typeof(DependAttribute), true))
+            if (!amBlitzModuleType.IsDefined(typeof(DependAttribute), true))
             {
                 return;
             }
-            var dependsAttrs = AmBlitzModuleType.GetCustomAttributes(typeof(DependAttribute), true)
+            var dependsAttrs = amBlitzModuleType.GetCustomAttributes(typeof(DependAttribute), true)
                 .Cast<DependAttribute>().ToList();
 
             foreach (var depend in dependsAttrs)

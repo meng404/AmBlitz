@@ -4,7 +4,7 @@ namespace AmBlitz.Domain
 {
     public class NullBusinessPrimaryKeyGen : IBusinessPrimaryKeyGen
     {
-        public object Gen(Type BusinessPrimaryKeyType)
+        public object Gen(Type businessPrimaryKeyType)
         {
             return null;
         }

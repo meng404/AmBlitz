@@ -40,7 +40,7 @@ namespace AmBlitz.ToolKit
         {
             if (value < 0)
             {
-                var message = string.Format("Value is not greater than or equal to 0: {0}.", value);
+                var message = $"Value is not greater than or equal to 0: {value}.";
                 throw new ArgumentOutOfRangeException(paramName, message);
             }
             return value;
@@ -50,7 +50,7 @@ namespace AmBlitz.ToolKit
         {
             if (value < 0)
             {
-                var message = string.Format("Value is not greater than or equal to 0: {0}.", value);
+                var message = $"Value is not greater than or equal to 0: {value}.";
                 throw new ArgumentOutOfRangeException(paramName, message);
             }
             return value;
@@ -60,7 +60,7 @@ namespace AmBlitz.ToolKit
         {
             if (value < TimeSpan.Zero)
             {
-                var message = string.Format("Value is not greater than or equal to zero: {0}.", TimeSpanParser.ToString(value));
+                var message = $"Value is not greater than or equal to zero: {TimeSpanParser.ToString(value)}.";
                 throw new ArgumentOutOfRangeException(paramName, message);
             }
             return value;
@@ -68,12 +68,9 @@ namespace AmBlitz.ToolKit
 
         public static int IsGreaterThanZero(int value, string paramName)
         {
-            if (value <= 0)
-            {
-                var message = string.Format("Value is not greater than zero: {0}.", value);
-                throw new ArgumentOutOfRangeException(paramName, message);
-            }
-            return value;
+            if (value > 0) return value;
+            var message = $"Value is not greater than zero: {value}.";
+            throw new ArgumentOutOfRangeException(paramName, message);
         }
 
         public static long IsGreaterThanZero(long value, string paramName)
@@ -90,7 +87,7 @@ namespace AmBlitz.ToolKit
         {
             if (value <= TimeSpan.Zero)
             {
-                var message = string.Format("Value is not greater than zero: {0}.", value);
+                var message = $"Value is not greater than zero: {value}.";
                 throw new ArgumentOutOfRangeException(paramName, message);
             }
             return value;
@@ -100,7 +97,8 @@ namespace AmBlitz.ToolKit
         {
             if (value < TimeSpan.Zero && value != Timeout.InfiniteTimeSpan)
             {
-                var message = string.Format("Value is not infinite or greater than or equal to zero: {0}.", TimeSpanParser.ToString(value));
+                var message =
+                    $"Value is not infinite or greater than or equal to zero: {TimeSpanParser.ToString(value)}.";
                 throw new ArgumentOutOfRangeException(paramName, message);
             }
             return value;
@@ -112,7 +110,7 @@ namespace AmBlitz.ToolKit
             {
                 return value;
             }
-            var message = string.Format("Value is not infinite or greater than zero: {0}.", TimeSpanParser.ToString(value));
+            var message = $"Value is not infinite or greater than zero: {TimeSpanParser.ToString(value)}.";
             throw new ArgumentOutOfRangeException(paramName, message);
         }
 
@@ -145,7 +143,7 @@ namespace AmBlitz.ToolKit
             {
                 throw new ArgumentNullException(paramName, "Value must be null.");
             }
-            return value;
+            return null;
         }
 
         public static int? IsNullOrGreaterThanOrEqualToZero(int? value, string paramName)
@@ -199,7 +197,8 @@ namespace AmBlitz.ToolKit
         {
             if (value.HasValue && value.Value < TimeSpan.Zero && value.Value != Timeout.InfiniteTimeSpan)
             {
-                var message = string.Format("Value is not null or infinite or greater than or equal to zero: {0}.", TimeSpanParser.ToString(value.Value));
+                var message =
+                    $"Value is not null or infinite or greater than or equal to zero: {TimeSpanParser.ToString(value.Value)}.";
                 throw new ArgumentOutOfRangeException(paramName, message);
             }
             return value;
@@ -228,7 +227,7 @@ namespace AmBlitz.ToolKit
         {
             if (value < TimeSpan.Zero && value != Timeout.InfiniteTimeSpan)
             {
-                var message = string.Format("Invalid timeout: {0}.", value);
+                var message = $"Invalid timeout: {value}.";
                 throw new ArgumentException(message, paramName);
             }
             return value;

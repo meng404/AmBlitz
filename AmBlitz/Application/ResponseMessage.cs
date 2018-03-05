@@ -16,7 +16,6 @@
         /// <summary>
         /// 生成成功响应
         /// </summary>
-        /// <param name="body"></param>
         /// <returns></returns>
         public static ResponseMessage<T> MakeSucc(T data)
         {

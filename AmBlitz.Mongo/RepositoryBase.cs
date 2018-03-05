@@ -28,7 +28,7 @@ namespace AmBlitz.Mongo
         /// <summary>
         /// 实体描述信息
         /// </summary>
-        private EntityDescribe _entityDescribe => _mongoDbProvider.EntityDescribe<TEntity>();
+        private EntityDescribe EntityDescribe => _mongoDbProvider.EntityDescribe<TEntity>();
 
         //是否软删除
         private bool SoftDelete => _mongoDbProvider.EnableSoftDelete<TEntity>();
@@ -58,7 +58,7 @@ namespace AmBlitz.Mongo
             if (SoftDelete)
             {
                 filter = Builders<TEntity>.Filter.And(Builders<TEntity>.Filter.Eq(filedName, value),
-                    Builders<TEntity>.Filter.Eq(i => ((ISoftDelete)i).IsDeleted, false));
+                    Builders<TEntity>.Filter.Eq(i => ((ISoftDelete) i).IsDeleted, false));
             }
             else
             {
@@ -204,12 +204,12 @@ namespace AmBlitz.Mongo
 
         public virtual void Insert(IEnumerable<TEntity> entities)
         {
-            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
+            if (EntityDescribe.BusinessPrimaryKeyAttribute != null)
             {
                 foreach (var entity in entities)
                 {
-                    var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
-                    _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
+                    var value = _businessPrimaryKeyGen.Gen(EntityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
+                    EntityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
                 }
             }
             PrimaryMongoCollection.InsertMany(entities);
@@ -217,22 +217,22 @@ namespace AmBlitz.Mongo
 
         public virtual void Insert(TEntity entity)
         {
-            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
+            if (EntityDescribe.BusinessPrimaryKeyAttribute != null)
             {
-                var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
-                _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
+                var value = _businessPrimaryKeyGen.Gen(EntityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
+                EntityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
             }
             PrimaryMongoCollection.InsertOne(entity);
         }
 
         public virtual Task InsertAsync(IEnumerable<TEntity> entities)
         {
-            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
+            if (EntityDescribe.BusinessPrimaryKeyAttribute != null)
             {
                 foreach (var entity in entities)
                 {
-                    var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
-                    _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
+                    var value = _businessPrimaryKeyGen.Gen(EntityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
+                    EntityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
                 }
             }
             return PrimaryMongoCollection.InsertManyAsync(entities);
@@ -240,10 +240,10 @@ namespace AmBlitz.Mongo
 
         public virtual Task InsertAsync(TEntity entity)
         {
-            if (_entityDescribe.BusinessPrimaryKeyAttribute != null)
+            if (EntityDescribe.BusinessPrimaryKeyAttribute != null)
             {
-                var value = _businessPrimaryKeyGen.Gen(_entityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
-                _entityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
+                var value = _businessPrimaryKeyGen.Gen(EntityDescribe.BusinessPrimaryKeyAttribute.BusinessPrimaryKeyType);
+                EntityDescribe.BusinessPrimaryKeyAttribute.KeyDescriptor.SetValue(entity, value);
             }
             return PrimaryMongoCollection.InsertOneAsync(entity);
         }

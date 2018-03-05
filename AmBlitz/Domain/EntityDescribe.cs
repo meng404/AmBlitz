@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AmBlitz.Domain
+﻿namespace AmBlitz.Domain
 {
     public class EntityDescribe
     {

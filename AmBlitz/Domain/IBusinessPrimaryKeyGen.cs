@@ -5,6 +5,6 @@ namespace AmBlitz.Domain
 {
     public interface IBusinessPrimaryKeyGen: ISingletonDependency
     {
-        object Gen(Type BusinessPrimaryKeyType);
+        object Gen(Type businessPrimaryKeyType);
     }
 }

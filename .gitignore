@@ -16,3 +16,5 @@
 /nupkg/*.nupkg
 /AmBlitz.RabbitMQ/bin
 /AmBlitz.RabbitMQ/obj
+/AmBlitz.EntityFrameworkCore/bin
+/AmBlitz.EntityFrameworkCore/obj

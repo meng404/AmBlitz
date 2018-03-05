@@ -15,24 +15,21 @@ namespace AmBlitz.ToolKit
             var ms = (long)value.TotalMilliseconds;
             if ((ms % msInOneHour) == 0)
             {
-                return string.Format("{0}h", ms / msInOneHour);
+                return $"{ms / msInOneHour}h";
             }
-            else if ((ms % msInOneMinute) == 0 && ms < msInOneHour)
+            if ((ms % msInOneMinute) == 0 && ms < msInOneHour)
             {
-                return string.Format("{0}m", ms / msInOneMinute);
+                return $"{ms / msInOneMinute}m";
             }
-            else if ((ms % msInOneSecond) == 0 && ms < msInOneMinute)
+            if ((ms % msInOneSecond) == 0 && ms < msInOneMinute)
             {
-                return string.Format("{0}s", ms / msInOneSecond);
+                return $"{ms / msInOneSecond}s";
             }
-            else if (ms < 1000)
+            if (ms < 1000)
             {
-                return string.Format("{0}ms", ms);
+                return $"{ms}ms";
             }
-            else
-            {
-                return value.ToString();
-            }
+            return value.ToString();
         }
 
         public static bool TryParse(string value, out TimeSpan result)
@@ -71,9 +68,8 @@ namespace AmBlitz.ToolKit
                     return TimeSpan.TryParse(value, out result);
                 }
 
-                double multiplicand;
                 var numberStyles = NumberStyles.None;
-                if (double.TryParse(value, numberStyles, CultureInfo.InvariantCulture, out multiplicand))
+                if (double.TryParse(value, numberStyles, CultureInfo.InvariantCulture, out var multiplicand))
                 {
                     result = TimeSpan.FromMilliseconds(multiplicand * multiplier);
                     return true;
