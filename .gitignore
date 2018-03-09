@@ -18,3 +18,5 @@
 /AmBlitz.RabbitMQ/obj
 /AmBlitz.EntityFrameworkCore/bin
 /AmBlitz.EntityFrameworkCore/obj
+/AmBlitzCore/obj
+/AmBlitzCore/bin
