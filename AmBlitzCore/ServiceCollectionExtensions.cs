@@ -9,9 +9,13 @@ namespace AmBlitzCore
         public static void AutoBuild(this IServiceCollection serviceCollection,Type startType)
         {
             var allDependModules = ModuleManager.Instance.AmBlitzModules(startType);
+            //模块注册
             foreach (var module in allDependModules)
             {
-                module.RegisterByConvention(serviceCollection);
+                module.ServiceCollection = serviceCollection;
+                module.RegisterByConvention();
+                module.PreInit();
+                module.Init();
             }
             
         }

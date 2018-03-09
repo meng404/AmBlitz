@@ -12,6 +12,7 @@ namespace AmBlitzCore.Module
 {
     public abstract class AmBlitzModule
     {
+        public IServiceCollection ServiceCollection { get; set; }
         public int Sort { get; set; }
 
         internal Type AmBlitzModuleType { get; set; }
@@ -46,14 +47,14 @@ namespace AmBlitzCore.Module
                    typeof(AmBlitzModule).IsAssignableFrom(type);
         }
 
-        internal void RegisterByConvention(IServiceCollection serviceCollection)
+        internal void RegisterByConvention()
         {
-            Register(serviceCollection,ServiceLifetime.Transient);
-            Register(serviceCollection,ServiceLifetime.Scoped);
-            Register(serviceCollection,ServiceLifetime.Singleton);
+            Register(ServiceLifetime.Transient);
+            Register(ServiceLifetime.Scoped);
+            Register(ServiceLifetime.Singleton);
         }
 
-        private void Register(IServiceCollection serviceCollection,ServiceLifetime serviceLifetime)
+        private void Register(ServiceLifetime serviceLifetime)
         {
             var dependencies = GetDependencies(serviceLifetime);
 
@@ -65,12 +66,12 @@ namespace AmBlitzCore.Module
                 var enumerable = interfaceTypes as Type[] ?? interfaceTypes.ToArray();
                 if (!enumerable.HasElement())
                 {
-                    serviceCollection.TryAdd(new ServiceDescriptor(type, type, serviceLifetime));
+                    ServiceCollection.TryAdd(new ServiceDescriptor(type, type, serviceLifetime));
                     continue;
                 }
                 foreach (var interfaceType in enumerable)
                 {
-                    serviceCollection.TryAdd(new ServiceDescriptor(interfaceType, type, serviceLifetime));
+                    ServiceCollection.TryAdd(new ServiceDescriptor(interfaceType, type, serviceLifetime));
                 }
             }
         }
