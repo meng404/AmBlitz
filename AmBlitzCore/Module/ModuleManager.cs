@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AmBlitzCore.ToolKit.Extensions;
 
 namespace AmBlitzCore.Module
 {
@@ -13,13 +14,12 @@ namespace AmBlitzCore.Module
         }
         private ModuleManager()
         {
-            _amBlitzModules= new List<AmBlitzModule>();
         }
         public static ModuleManager Instance { get; } = new ModuleManager();
 
         public List<AmBlitzModule> AmBlitzModules(Type startBlitzModuleType)
         {
-            if (_amBlitzModules != null)
+            if (_amBlitzModules.HasElement())
             {
                 return _amBlitzModules;
             }
