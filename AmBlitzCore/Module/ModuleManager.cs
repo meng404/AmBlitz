@@ -23,6 +23,7 @@ namespace AmBlitzCore.Module
             {
                 return _amBlitzModules;
             }
+            _amBlitzModules = new List<AmBlitzModule>();
             FindAmBlitzModules(startBlitzModuleType);
             _amBlitzModules = _amBlitzModules.OrderByDescending(m => m.Sort).ToList();
             return _amBlitzModules;
