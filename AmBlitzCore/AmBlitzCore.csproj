@@ -9,6 +9,9 @@
     <RepositoryType>AmBlitzCore</RepositoryType>
     <Description>集中构建注册插件</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>1.0.0.1</FileVersion>
+    <Version>1.0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
