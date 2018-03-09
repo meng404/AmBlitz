@@ -31,6 +31,7 @@ namespace AmBlitz.Domain
         /// <param name="assemblies"></param>
         private void Scan(Assembly[] assemblies)
         {
+            if (assemblies == null) throw new ArgumentNullException(nameof(assemblies));
             foreach (var assembly in assemblies)
             {
                 var types = assembly.GetExportedTypes().Where(m => m.GetCustomAttribute<EntityAttribute>() != null);
@@ -53,7 +54,7 @@ namespace AmBlitz.Domain
 
 
                     //处理包含业务主键的类型实体
-                    var prop = type.GetProperties().Where(m => m.HasAttribute<BusinessPrimaryKeyAttribute>()).FirstOrDefault();
+                    var prop = type.GetProperties().FirstOrDefault(m => m.HasAttribute<BusinessPrimaryKeyAttribute>());
                     if (prop !=null)
                     {
                         entityDescribe.BusinessPrimaryKeyAttribute = prop.GetCustomAttribute<BusinessPrimaryKeyAttribute>();
