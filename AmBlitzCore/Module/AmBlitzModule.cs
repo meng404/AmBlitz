@@ -34,6 +34,11 @@ namespace AmBlitzCore.Module
 
         }
 
+        public virtual void ProcModules(List<AmBlitzModule> amBlitzModules)
+        {
+
+        }
+
         /// <summary>
         /// 判断是否是AmBlitzModule类型
         /// </summary>

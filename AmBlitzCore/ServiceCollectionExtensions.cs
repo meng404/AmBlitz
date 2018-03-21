@@ -13,6 +13,7 @@ namespace AmBlitzCore
             foreach (var module in allDependModules)
             {
                 module.ServiceCollection = serviceCollection;
+                module.ProcModules(allDependModules);
                 module.RegisterByConvention();
                 module.PreInit();
                 module.Init();

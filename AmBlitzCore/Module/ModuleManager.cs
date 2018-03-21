@@ -5,7 +5,7 @@ using AmBlitzCore.ToolKit.Extensions;
 
 namespace AmBlitzCore.Module
 {
-    internal sealed class ModuleManager
+    public sealed class ModuleManager
     {
         private List<AmBlitzModule> _amBlitzModules;
         static ModuleManager()

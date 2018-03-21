@@ -20,3 +20,7 @@
 /AmBlitz.EntityFrameworkCore/obj
 /AmBlitzCore/obj
 /AmBlitzCore/bin
+/AmBlitzCore.AutoMapper/bin
+/AmBlitzCore.AutoMapper/obj
+/AmBlitzCore.Test/bin
+/AmBlitzCore.Test/obj

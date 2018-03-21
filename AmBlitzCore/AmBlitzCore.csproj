@@ -7,11 +7,11 @@
     <Product>AmBlitzCore</Product>
     <Copyright>Copyright 2018 by 魏安蒙</Copyright>
     <RepositoryType>AmBlitzCore</RepositoryType>
-    <Description>集中构建注册插件</Description>
+    <Description>集中注册，常用扩展</Description>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
-    <Version>1.0.0.1</Version>
+    <FileVersion>1.0.0.2</FileVersion>
+    <Version>1.0.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
