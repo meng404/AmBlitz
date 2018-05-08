@@ -11,16 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmBlitz.UnitTest", "AmBlitz
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmBlitz.Mongo", "AmBlitz.Mongo\AmBlitz.Mongo.csproj", "{DEBFC6FF-8D9A-4B09-9024-868BC415996C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmBlitz.EntityFrameworkCore", "AmBlitz.EntityFrameworkCore\AmBlitz.EntityFrameworkCore.csproj", "{19E10A1A-10A2-43A2-B05F-DD2E81DA357A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NT", "NT", "{EC283E5A-A652-416E-B10E-1293E46A155C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmBlitzCore", "AmBlitzCore\AmBlitzCore.csproj", "{CF499AB6-6AAF-42D5-93E4-C70DD6D0720B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmBlitzCore.Test", "AmBlitzCore.Test\AmBlitzCore.Test.csproj", "{1D5A958E-0559-49AB-B5ED-989C7476E803}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmBlitzCore.AutoMapper", "AmBlitzCore.AutoMapper\AmBlitzCore.AutoMapper.csproj", "{C3AC0E6A-8F4F-4234-8A14-F050AFDC8AA7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,31 +33,9 @@ Global
 		{DEBFC6FF-8D9A-4B09-9024-868BC415996C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEBFC6FF-8D9A-4B09-9024-868BC415996C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEBFC6FF-8D9A-4B09-9024-868BC415996C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19E10A1A-10A2-43A2-B05F-DD2E81DA357A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19E10A1A-10A2-43A2-B05F-DD2E81DA357A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19E10A1A-10A2-43A2-B05F-DD2E81DA357A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19E10A1A-10A2-43A2-B05F-DD2E81DA357A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CF499AB6-6AAF-42D5-93E4-C70DD6D0720B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF499AB6-6AAF-42D5-93E4-C70DD6D0720B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF499AB6-6AAF-42D5-93E4-C70DD6D0720B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF499AB6-6AAF-42D5-93E4-C70DD6D0720B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1D5A958E-0559-49AB-B5ED-989C7476E803}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D5A958E-0559-49AB-B5ED-989C7476E803}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D5A958E-0559-49AB-B5ED-989C7476E803}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D5A958E-0559-49AB-B5ED-989C7476E803}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C3AC0E6A-8F4F-4234-8A14-F050AFDC8AA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C3AC0E6A-8F4F-4234-8A14-F050AFDC8AA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C3AC0E6A-8F4F-4234-8A14-F050AFDC8AA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C3AC0E6A-8F4F-4234-8A14-F050AFDC8AA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{19E10A1A-10A2-43A2-B05F-DD2E81DA357A} = {EC283E5A-A652-416E-B10E-1293E46A155C}
-		{CF499AB6-6AAF-42D5-93E4-C70DD6D0720B} = {EC283E5A-A652-416E-B10E-1293E46A155C}
-		{1D5A958E-0559-49AB-B5ED-989C7476E803} = {EC283E5A-A652-416E-B10E-1293E46A155C}
-		{C3AC0E6A-8F4F-4234-8A14-F050AFDC8AA7} = {EC283E5A-A652-416E-B10E-1293E46A155C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E43BF8A-ABE5-4369-BF18-816C89ABFDED}

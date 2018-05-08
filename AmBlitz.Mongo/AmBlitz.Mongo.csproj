@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="AmBlitzMongoModule.cs" />
     <Compile Include="IMongoDbProvider.cs" />
+    <Compile Include="RepositoryExtend.cs" />
     <Compile Include="MongoDbProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RepositoryBase.cs" />

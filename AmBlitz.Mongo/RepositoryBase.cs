@@ -33,6 +33,8 @@ namespace AmBlitz.Mongo
         //是否软删除
         private bool SoftDelete => _mongoDbProvider.EnableSoftDelete<TEntity>();
 
+        public IMongoCollection<TEntity> MongoCollection => SlaveMongoCollection;
+
         public virtual IQueryable<TEntity> Table
         {
             get
