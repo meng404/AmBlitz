@@ -1,9 +1,9 @@
 ﻿using AmBlitz.Cache;
 using AmBlitz.Configuration;
 using AmBlitz.Domain;
-using Autofac;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Configuration;
+using Autofac;
 
 namespace AmBlitz.UnitTest
 {

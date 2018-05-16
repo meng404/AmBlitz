@@ -14,7 +14,7 @@ namespace AmBlitz.AutoMapping
         {
             foreach (var targetType in TargetTypes)
             {
-                configuration.CreateMap(targetType, type);
+                configuration.CreateMap(targetType, type,MemberList.None);
             }
         }
     }
